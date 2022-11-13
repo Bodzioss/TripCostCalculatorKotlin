@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/passengerNameLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="20px"
+        android:text="Imię pasażera"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/passengerDistanceLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/passengerDistanceLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="20px"
+        android:text="Dystans"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/unityLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/unityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20px"
+        android:text="km"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/btnDeletePassenger"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btnDeletePassenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20px"
+        android:text="x"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
