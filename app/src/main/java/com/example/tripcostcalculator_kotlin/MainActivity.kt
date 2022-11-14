@@ -1,12 +1,12 @@
 package com.example.tripcostcalculator_kotlin
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.passenger_item.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCostClickListener {
 
     private lateinit var passengerAdapter: PassengerAdapter
     private lateinit var additionalCostAdapter: AdditionalCostAdapter
@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        passengerAdapter = PassengerAdapter(mutableListOf())
-        additionalCostAdapter = AdditionalCostAdapter(mutableListOf())
+        passengerAdapter = PassengerAdapter(mutableListOf(),this@MainActivity)
+        additionalCostAdapter = AdditionalCostAdapter(mutableListOf(),this@MainActivity)
 
         passengerItems.adapter = passengerAdapter
         passengerItems.layoutManager = LinearLayoutManager(this)
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 passengerAdapter.addPassenger(passenger)
             }
         }
+
 
         additionalCostItems.adapter = additionalCostAdapter
         additionalCostItems.layoutManager = LinearLayoutManager(this)
@@ -45,6 +46,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
+        btnOpenMainView.setOnClickListener{
+            val intent = Intent(this,ResultActivity::class.java)
+            startActivity(intent)
+        }
     }
+
+    override fun removePassenger(position: Int) {
+        passengerAdapter.removePassenger(position)
+    }
+
+    override fun removeAdditionalCost(position: Int) {
+        additionalCostAdapter.removeAdditionalCost(position)
+    }
+
 }

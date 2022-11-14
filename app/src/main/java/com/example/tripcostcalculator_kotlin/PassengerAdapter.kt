@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class PassengerAdapter (
-    private val passengers: MutableList<Passenger>
+    private val passengers: MutableList<Passenger>, private val passengerClickListener : PassengerClickListener
 ) : RecyclerView.Adapter<PassengerAdapter.PassengerViewHolder>(){
 
     class PassengerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val passengerName : TextView = itemView.findViewById(R.id.passengerNameLabel)
         val passengerDistance : TextView = itemView.findViewById(R.id.passengerDistanceLabel)
+        val btnDeletePassenger :TextView = itemView.findViewById(R.id.btnDeletePassenger)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassengerViewHolder {
@@ -31,15 +32,20 @@ class PassengerAdapter (
         notifyItemInserted(passengers.size-1)
     }
 
-    fun deletePassenger(position: Int){
+    fun removePassenger(position: Int){
         passengers.removeAt(position)
+        notifyItemRemoved(passengers.size-1)
     }
+
 
     override fun onBindViewHolder(holder: PassengerViewHolder, position: Int) {
         val curPassenger = passengers[position]
         holder.itemView.apply {
             holder.passengerName.text = curPassenger.name
             holder.passengerDistance.text = curPassenger.distance.toString()
+            holder.btnDeletePassenger.setOnClickListener{
+                passengerClickListener.removePassenger(position)
+            }
         }
     }
 

@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.additionalcost_item.view.*
 import kotlinx.android.synthetic.main.passenger_item.view.*
 
-class AdditionalCostAdapter (private val additionalCosts : MutableList<AdditionalCost>
+class AdditionalCostAdapter (private val additionalCosts : MutableList<AdditionalCost> ,
+                             private val additionalCostClickListener : AdditionalCostClickListener
 ): RecyclerView.Adapter<AdditionalCostAdapter.AdditionalCostViewHolder>(){
 
     class AdditionalCostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -17,6 +18,11 @@ class AdditionalCostAdapter (private val additionalCosts : MutableList<Additiona
     fun addAdditionalCost(additionalCost: AdditionalCost){
         additionalCosts.add(additionalCost)
         notifyItemInserted(additionalCosts.size-1)
+    }
+
+    fun removeAdditionalCost(position: Int){
+        additionalCosts.removeAt(position)
+        notifyItemRemoved(additionalCosts.size-1)
     }
 
 
@@ -35,6 +41,9 @@ class AdditionalCostAdapter (private val additionalCosts : MutableList<Additiona
         holder.itemView.apply {
             holder.itemView.additionalCostNameLabel.text = curAdditionalCost.name
             holder.itemView.additionalCostPriceLabel.text = curAdditionalCost.price.toString()
+            holder.itemView.btnDeleteAdditionalCost.setOnClickListener{
+                additionalCostClickListener.removeAdditionalCost(position)
+            }
         }
     }
 
