@@ -5,17 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.passenger_item.view.*
 
 
 class PassengerAdapter (
     private val passengers: MutableList<Passenger>, private val passengerClickListener : PassengerClickListener
 ) : RecyclerView.Adapter<PassengerAdapter.PassengerViewHolder>(){
 
-    class PassengerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val passengerName : TextView = itemView.findViewById(R.id.passengerNameLabel)
-        val passengerDistance : TextView = itemView.findViewById(R.id.passengerDistanceLabel)
-        val btnDeletePassenger :TextView = itemView.findViewById(R.id.btnDeletePassenger)
-    }
+    class PassengerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassengerViewHolder {
         return PassengerViewHolder(
@@ -37,13 +34,22 @@ class PassengerAdapter (
         notifyItemRemoved(passengers.size-1)
     }
 
+    fun sumFuelCost(fuelCost: Double,combustion: Double): String {
+        var sumFuelCost: Double = 0.0
+        val costForKm:Double = combustion / 100 * fuelCost
+        passengers.forEach{
+            sumFuelCost += it.distance * costForKm
+        }
+        return sumFuelCost.toString() + "zł"
+    }
+
 
     override fun onBindViewHolder(holder: PassengerViewHolder, position: Int) {
         val curPassenger = passengers[position]
         holder.itemView.apply {
-            holder.passengerName.text = curPassenger.name
-            holder.passengerDistance.text = curPassenger.distance.toString()
-            holder.btnDeletePassenger.setOnClickListener{
+            holder.itemView.passengerNameLabel.text = curPassenger.name
+            holder.itemView.passengerDistanceLabel.text = curPassenger.distance.toString()
+            holder.itemView.btnDeletePassenger.setOnClickListener{
                 passengerClickListener.removePassenger(position)
             }
         }

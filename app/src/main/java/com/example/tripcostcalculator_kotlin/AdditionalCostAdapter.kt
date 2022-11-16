@@ -50,4 +50,12 @@ class AdditionalCostAdapter (private val additionalCosts : MutableList<Additiona
     override fun getItemCount(): Int {
         return additionalCosts.size
     }
+
+    fun sumAdditionalCosts(): String {
+        var additionalCostPrice: Double = 0.0
+        additionalCosts.forEach{
+            additionalCostPrice += it.price
+        }
+        return additionalCostPrice.toString() + "zł"
+    }
 }

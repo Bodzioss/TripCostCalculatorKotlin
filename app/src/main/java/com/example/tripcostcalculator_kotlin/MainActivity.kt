@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
 
         passengerItems.adapter = passengerAdapter
         passengerItems.layoutManager = LinearLayoutManager(this)
-
+        passengerItems.setHasFixedSize(true)
         btnAddPassenger.setOnClickListener{
             val passengerName = passengerNameInput.text.toString()
             val passengerDistance = passengerDistanceInput.text.toString()
@@ -47,7 +47,14 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
         }
 
         btnOpenMainView.setOnClickListener{
+            val combustion = combustionInput.text.toString().toDouble()
+            val fuelCost = fuelCostInput.text.toString().toDouble()
+            val sumFuelCost: String = passengerAdapter.sumFuelCost(fuelCost,combustion)
+            val additionalCostPrice: String = additionalCostAdapter.sumAdditionalCosts() + "zł"
+
             val intent = Intent(this,ResultActivity::class.java)
+            intent.putExtra("sumFuelCost",sumFuelCost)
+            fuelCostUnit.text = sumFuelCost
             startActivity(intent)
         }
     }
@@ -55,6 +62,7 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
     override fun removePassenger(position: Int) {
         passengerAdapter.removePassenger(position)
     }
+
 
     override fun removeAdditionalCost(position: Int) {
         additionalCostAdapter.removeAdditionalCost(position)

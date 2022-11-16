@@ -10,9 +10,12 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+
+        sumFuelCostLabel.text = intent.getStringExtra("sumFuelCost")
         btnOpenMainView.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
+
     }
 }

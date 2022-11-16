@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toStartOf="@+id/passengerDistanceLabel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <TextView
         android:id="@+id/passengerDistanceLabel"
@@ -24,11 +24,11 @@
         android:padding="20px"
         android:text="Dystans"
         android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/unityLabel"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/unityLabel3"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <TextView
-        android:id="@+id/unityLabel"
+        android:id="@+id/unityLabel3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20px"
@@ -44,7 +44,7 @@
         android:padding="20px"
         android:text="x"
         android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
