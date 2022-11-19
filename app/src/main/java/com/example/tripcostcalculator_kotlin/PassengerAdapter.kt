@@ -34,6 +34,10 @@ class PassengerAdapter (
         notifyItemRemoved(passengers.size-1)
     }
 
+    fun getPassengers(): MutableList<Passenger> {
+        return passengers
+    }
+
     fun sumFuelCost(fuelCost: Double,combustion: Double): String {
         var sumFuelCost: Double = 0.0
         val costForKm:Double = combustion / 100 * fuelCost

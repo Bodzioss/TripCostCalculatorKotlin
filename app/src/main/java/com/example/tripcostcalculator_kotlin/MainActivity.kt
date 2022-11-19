@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
 
         passengerItems.adapter = passengerAdapter
         passengerItems.layoutManager = LinearLayoutManager(this)
-        passengerItems.setHasFixedSize(true)
         btnAddPassenger.setOnClickListener{
             val passengerName = passengerNameInput.text.toString()
             val passengerDistance = passengerDistanceInput.text.toString()
@@ -54,6 +53,7 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
 
             val intent = Intent(this,ResultActivity::class.java)
             intent.putExtra("sumFuelCost",sumFuelCost)
+            intent.putParcelableArrayListExtra("passengers",ArrayList(passengerAdapter.getPassengers()))
             fuelCostUnit.text = sumFuelCost
             startActivity(intent)
         }
