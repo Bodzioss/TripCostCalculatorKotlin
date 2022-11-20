@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btnAddAdditionalCost"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".mainview.MainActivity">
 
 
     <LinearLayout
@@ -33,7 +33,10 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,13 +67,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="20px">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/passengerNameInput"
-                            android:layout_width="228dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:ems="10"
@@ -82,16 +85,16 @@
                         <EditText
                             android:id="@+id/passengerDistanceInput"
                             android:layout_width="79dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:hint="0"
+                            android:hint="Cena"
                             android:inputType="numberDecimal"
-                            android:padding="20dp"
+                            android:padding="20px"
                             android:textColor="#000000" />
 
                         <TextView
-                            android:id="@+id/textView12"
+                            android:id="@+id/unityLabel4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -105,12 +108,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:lines="1"
-                            android:padding="20dp"
+                            android:padding="20px"
                             android:text="+"
                             android:textColor="#000000"
                             android:textStyle="bold" />
-
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -249,7 +250,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/btnAddAdditionalCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

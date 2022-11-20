@@ -1,4 +1,4 @@
-package com.example.tripcostcalculator_kotlin
+package com.example.tripcostcalculator_kotlin.mainview
 
 
 interface PassengerClickListener {

@@ -1,4 +1,4 @@
-package com.example.tripcostcalculator_kotlin
+package com.example.tripcostcalculator_kotlin.mainview
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

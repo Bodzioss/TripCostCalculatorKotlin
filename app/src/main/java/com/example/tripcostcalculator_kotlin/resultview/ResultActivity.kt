@@ -1,8 +1,10 @@
-package com.example.tripcostcalculator_kotlin
+package com.example.tripcostcalculator_kotlin.resultview
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tripcostcalculator_kotlin.R
+import com.example.tripcostcalculator_kotlin.mainview.MainActivity
 import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {
@@ -13,7 +15,7 @@ class ResultActivity : AppCompatActivity() {
 
         sumFuelCostLabel.text = intent.getStringExtra("sumFuelCost")
         btnOpenMainView.setOnClickListener{
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

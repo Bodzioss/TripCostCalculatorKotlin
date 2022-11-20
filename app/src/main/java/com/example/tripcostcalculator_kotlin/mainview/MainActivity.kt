@@ -1,9 +1,11 @@
-package com.example.tripcostcalculator_kotlin
+package com.example.tripcostcalculator_kotlin.mainview
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tripcostcalculator_kotlin.R
+import com.example.tripcostcalculator_kotlin.resultview.ResultActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCostClickListener {
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
             val sumFuelCost: String = passengerAdapter.sumFuelCost(fuelCost,combustion)
             val additionalCostPrice: String = additionalCostAdapter.sumAdditionalCosts() + "zł"
 
-            val intent = Intent(this,ResultActivity::class.java)
+            val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra("sumFuelCost",sumFuelCost)
             intent.putParcelableArrayListExtra("passengers",ArrayList(passengerAdapter.getPassengers()))
             fuelCostUnit.text = sumFuelCost

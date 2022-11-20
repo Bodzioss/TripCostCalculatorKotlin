@@ -1,14 +1,13 @@
-package com.example.tripcostcalculator_kotlin
+package com.example.tripcostcalculator_kotlin.mainview
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tripcostcalculator_kotlin.R
 import kotlinx.android.synthetic.main.additionalcost_item.view.*
-import kotlinx.android.synthetic.main.passenger_item.view.*
 
-class AdditionalCostAdapter (private val additionalCosts : MutableList<AdditionalCost> ,
+class AdditionalCostAdapter (private val additionalCosts : MutableList<AdditionalCost>,
                              private val additionalCostClickListener : AdditionalCostClickListener
 ): RecyclerView.Adapter<AdditionalCostAdapter.AdditionalCostViewHolder>(){
 
@@ -27,7 +26,7 @@ class AdditionalCostAdapter (private val additionalCosts : MutableList<Additiona
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdditionalCostViewHolder {
-        return AdditionalCostAdapter.AdditionalCostViewHolder(
+        return AdditionalCostViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.additionalcost_item,
                 parent,
