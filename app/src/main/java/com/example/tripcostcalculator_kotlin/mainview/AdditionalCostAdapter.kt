@@ -57,4 +57,8 @@ class AdditionalCostAdapter (private val additionalCosts : MutableList<Additiona
         }
         return additionalCostPrice.toString() + "zł"
     }
+
+    fun  getAdditionalCosts(): MutableCollection<AdditionalCost>? {
+        return additionalCosts
+    }
 }

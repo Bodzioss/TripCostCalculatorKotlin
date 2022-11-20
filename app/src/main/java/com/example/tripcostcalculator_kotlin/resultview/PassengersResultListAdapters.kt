@@ -5,12 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
+import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView.ItemView
 import com.example.tripcostcalculator_kotlin.R
+import com.example.tripcostcalculator_kotlin.mainview.AdditionalCost
 import com.example.tripcostcalculator_kotlin.mainview.Passenger
 
-class PassengersResultListAdapters(var context: Context, var passengers: ArrayList<Passenger>): BaseAdapter() {
+class PassengersResultListAdapters(var context: Context, var passengers: ArrayList<Passenger>,var additionalCost: ArrayList<AdditionalCost>): BaseAdapter() {
+    private var listView: ListView? =null
+    private var additionalCostAdapters:AdditionalCostListAdapter ? =null
+    private var arrayList:ArrayList<AdditionalCost> ? =null
+
     override fun getCount(): Int {
         return passengers.size
     }
@@ -26,11 +32,19 @@ class PassengersResultListAdapters(var context: Context, var passengers: ArrayLi
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view:View = View.inflate(context, R.layout.passenger_card_view,null)
 
-        val name:TextView = view.findViewById(R.id.passengerNameCardLabel)
+        val passengerName:TextView = view.findViewById(R.id.passengerNameCardLabel)
+
+        val fuelPrice:TextView = view.findViewById(R.id.fuelCostCardLabel)
+
+        val additionalCost:TextView = view.findViewById(R.id.additionalCostCardLabel)
 
         var passenger:Passenger = passengers.get(position)
 
-        name.text = passenger.name
+        passengerName.text = passenger.name
+
+        fuelPrice.text = passenger.fuelCost.toString() + " zł"
+
+        additionalCost.text = passenger.additionalCost.toString() + " zł"
 
         return view!!
     }

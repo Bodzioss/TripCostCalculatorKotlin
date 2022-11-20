@@ -39,6 +39,28 @@ class PassengerAdapter (
         return passengers
     }
 
+    fun calculatePassengerFuelCost(passenger: Passenger,fuelCost: Double, combustion: Double): Double {
+        var passengerFuelCost = combustion / 100 * fuelCost * passenger.distance
+        return passengerFuelCost
+    }
+
+    fun calculatePassengerAdditionalCost(additionalCosts:MutableCollection<AdditionalCost>?): Double {
+        var sumAdditionalCost:Double = 0.0
+        if (additionalCosts != null) {
+            additionalCosts.forEach{
+                sumAdditionalCost += it.price
+            }
+        }
+        return sumAdditionalCost
+    }
+
+    fun calculatePassengers(combustion: Double, fuelCost: Double, additionalCosts:MutableCollection<AdditionalCost>?){
+        passengers.forEach{
+            it.fuelCost = calculatePassengerFuelCost(it,fuelCost,combustion)
+            it.additionalCost = calculatePassengerAdditionalCost(additionalCosts)
+        }
+    }
+
     fun sumFuelCost(fuelCost: Double,combustion: Double): String {
         var sumFuelCost: Double = 0.0
         val costForKm:Double = combustion / 100 * fuelCost

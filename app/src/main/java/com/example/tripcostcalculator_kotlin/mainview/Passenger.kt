@@ -6,5 +6,7 @@ import java.util.Base64.Decoder
 @Parcelize
 data class Passenger(
     val name: String,
-    val distance: Double
+    val distance: Double,
+    var fuelCost: Double,
+    var additionalCost: Double
 ):Parcelable

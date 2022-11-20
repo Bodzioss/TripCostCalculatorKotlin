@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
             val passengerDistance = passengerDistanceInput.text.toString()
             if(passengerName.isNotEmpty() && passengerDistance.isNotEmpty())
             {
-                val passenger = Passenger(passengerName,passengerDistance.toDouble())
+                val passenger = Passenger(passengerName,passengerDistance.toDouble(),0.0,0.0)
                 passengerAdapter.addPassenger(passenger)
             }
         }
@@ -52,10 +52,13 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
             val fuelCost = fuelCostInput.text.toString().toDouble()
             val sumFuelCost: String = passengerAdapter.sumFuelCost(fuelCost,combustion)
             val additionalCostPrice: String = additionalCostAdapter.sumAdditionalCosts() + "zł"
+            passengerAdapter.calculatePassengers(combustion, fuelCost, additionalCostAdapter.getAdditionalCosts())
 
             val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra("sumFuelCost",sumFuelCost)
+            intent.putExtra("sumAdditionalCosts",additionalCostPrice)
             intent.putParcelableArrayListExtra("passengers",ArrayList(passengerAdapter.getPassengers()))
+            intent.putParcelableArrayListExtra("additionalCosts",ArrayList(additionalCostAdapter.getAdditionalCosts()))
             fuelCostUnit.text = sumFuelCost
             startActivity(intent)
         }
