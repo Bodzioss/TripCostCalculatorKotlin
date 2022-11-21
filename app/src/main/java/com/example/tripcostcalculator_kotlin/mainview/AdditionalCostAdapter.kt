@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tripcostcalculator_kotlin.R
 import kotlinx.android.synthetic.main.additionalcost_item.view.*
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class AdditionalCostAdapter (private val additionalCosts : MutableList<AdditionalCost>,
                              private val additionalCostClickListener : AdditionalCostClickListener
@@ -55,7 +57,7 @@ class AdditionalCostAdapter (private val additionalCosts : MutableList<Additiona
         additionalCosts.forEach{
             additionalCostPrice += it.price
         }
-        return additionalCostPrice.toString() + "zł"
+        return BigDecimal(additionalCostPrice).setScale(2, RoundingMode.HALF_EVEN).toString()
     }
 
     fun  getAdditionalCosts(): MutableCollection<AdditionalCost>? {

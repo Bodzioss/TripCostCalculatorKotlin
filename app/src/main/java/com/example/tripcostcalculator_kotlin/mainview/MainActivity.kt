@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         passengerAdapter = PassengerAdapter(mutableListOf(),this@MainActivity)
         additionalCostAdapter = AdditionalCostAdapter(mutableListOf(),this@MainActivity)
 
@@ -51,12 +53,14 @@ class MainActivity : AppCompatActivity(), PassengerClickListener, AdditionalCost
             val combustion = combustionInput.text.toString().toDouble()
             val fuelCost = fuelCostInput.text.toString().toDouble()
             val sumFuelCost: String = passengerAdapter.sumFuelCost(fuelCost,combustion)
-            val additionalCostPrice: String = additionalCostAdapter.sumAdditionalCosts() + "zł"
+            val additionalCostPrice: String = additionalCostAdapter.sumAdditionalCosts()
             passengerAdapter.calculatePassengers(combustion, fuelCost, additionalCostAdapter.getAdditionalCosts())
 
             val intent = Intent(this, ResultActivity::class.java)
-            intent.putExtra("sumFuelCost",sumFuelCost)
-            intent.putExtra("sumAdditionalCosts",additionalCostPrice)
+            val sumCosts:Double = sumFuelCost.toDouble()+additionalCostPrice.toDouble()
+            intent.putExtra("sumFuelCost",sumFuelCost + "zł")
+            intent.putExtra("sumAdditionalCosts",additionalCostPrice + "zł")
+            intent.putExtra("sumCosts",sumCosts.toString() + "zł")
             intent.putParcelableArrayListExtra("passengers",ArrayList(passengerAdapter.getPassengers()))
             intent.putParcelableArrayListExtra("additionalCosts",ArrayList(additionalCostAdapter.getAdditionalCosts()))
             fuelCostUnit.text = sumFuelCost

@@ -1,50 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/additionalCostNameLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="20px"
-        android:text="Nazwa kosztu"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/additionalCostPriceLabel"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
-
-    <TextView
-        android:id="@+id/additionalCostPriceLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="20px"
-        android:text="Koszt"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/unityLabel"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
-
-    <TextView
-        android:id="@+id/unityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20px"
-        android:text="km"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/btnDeleteAdditionalCost"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/btnDeleteAdditionalCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20px"
-        android:text="x"
-        android:textColor="#000000"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corners"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/additionalCostNameLabel"
+            android:layout_width="199dp"
+            android:layout_height="wrap_content"
+            android:background="#00272727"
+            android:padding="20px"
+            android:text="Nazwa kosztu"
+            android:textColor="#000000"></TextView>
+
+        <TextView
+            android:id="@+id/additionalCostPriceLabel"
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:background="#00272727"
+            android:padding="20px"
+            android:text="Koszt"
+            android:textColor="#000000"></TextView>
+
+        <TextView
+            android:id="@+id/unityLabel"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:background="#00272727"
+            android:padding="20px"
+            android:text="km"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/btnDeleteAdditionalCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00272727"
+            android:padding="20px"
+            android:text="x"
+            android:textColor="#000000"
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

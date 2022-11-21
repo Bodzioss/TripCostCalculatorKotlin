@@ -29,6 +29,7 @@ class ResultActivity : AppCompatActivity() {
 
         fuelCostCardLabel.text = intent.getStringExtra("sumFuelCost")
         additionalCostSumLabel.text = intent.getStringExtra("sumAdditionalCosts")
+        passengerCostSumCardLabel.text = intent.getStringExtra("sumCosts")
         btnOpenMainView.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -42,8 +43,6 @@ class ResultActivity : AppCompatActivity() {
 
 
         setListViewHeightBasedOnChildren(passengerListView)
-
-
     }
 
     fun setListViewHeightBasedOnChildren(listView: ListView) {

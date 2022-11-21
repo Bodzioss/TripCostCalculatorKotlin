@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tripcostcalculator_kotlin.R
 import kotlinx.android.synthetic.main.passenger_item.view.*
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 
 class PassengerAdapter (
@@ -44,11 +46,11 @@ class PassengerAdapter (
         return passengerFuelCost
     }
 
-    fun calculatePassengerAdditionalCost(additionalCosts:MutableCollection<AdditionalCost>?): Double {
+    fun calculatePassengerAdditionalCost(additionalCosts:MutableCollection<AdditionalCost>?,passengerCount:Int): Double {
         var sumAdditionalCost:Double = 0.0
         if (additionalCosts != null) {
             additionalCosts.forEach{
-                sumAdditionalCost += it.price
+                sumAdditionalCost += it.price / passengerCount
             }
         }
         return sumAdditionalCost
@@ -56,8 +58,8 @@ class PassengerAdapter (
 
     fun calculatePassengers(combustion: Double, fuelCost: Double, additionalCosts:MutableCollection<AdditionalCost>?){
         passengers.forEach{
-            it.fuelCost = calculatePassengerFuelCost(it,fuelCost,combustion)
-            it.additionalCost = calculatePassengerAdditionalCost(additionalCosts)
+            it.fuelCost = BigDecimal(calculatePassengerFuelCost(it,fuelCost,combustion)).setScale(2, RoundingMode.HALF_EVEN).toDouble()
+            it.additionalCost = BigDecimal(calculatePassengerAdditionalCost(additionalCosts,passengers.size)).setScale(2, RoundingMode.HALF_EVEN).toDouble()
         }
     }
 
@@ -67,7 +69,7 @@ class PassengerAdapter (
         passengers.forEach{
             sumFuelCost += it.distance * costForKm
         }
-        return sumFuelCost.toString() + "zł"
+        return BigDecimal(sumFuelCost).setScale(2, RoundingMode.HALF_EVEN).toString()
     }
 
 

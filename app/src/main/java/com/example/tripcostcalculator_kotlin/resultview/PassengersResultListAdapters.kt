@@ -38,6 +38,8 @@ class PassengersResultListAdapters(var context: Context, var passengers: ArrayLi
 
         val additionalCost:TextView = view.findViewById(R.id.additionalCostCardLabel)
 
+        val sumPrice:TextView = view.findViewById(R.id.passengerCostCardLabel)
+
         var passenger:Passenger = passengers.get(position)
 
         passengerName.text = passenger.name
@@ -45,6 +47,8 @@ class PassengersResultListAdapters(var context: Context, var passengers: ArrayLi
         fuelPrice.text = passenger.fuelCost.toString() + " zł"
 
         additionalCost.text = passenger.additionalCost.toString() + " zł"
+
+        sumPrice.text = (passenger.fuelCost + passenger.additionalCost).toString() + "zł"
 
         return view!!
     }
