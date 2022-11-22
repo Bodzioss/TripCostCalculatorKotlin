@@ -34,6 +34,8 @@ class PassengersResultListAdapters(var context: Context, var passengers: ArrayLi
 
         val passengerName:TextView = view.findViewById(R.id.passengerNameCardLabel)
 
+        val passengerDistance:TextView = view.findViewById(R.id.passengerDistanceCardLabel)
+
         val fuelPrice:TextView = view.findViewById(R.id.fuelCostCardLabel)
 
         val additionalCost:TextView = view.findViewById(R.id.additionalCostCardLabel)
@@ -43,6 +45,8 @@ class PassengersResultListAdapters(var context: Context, var passengers: ArrayLi
         var passenger:Passenger = passengers.get(position)
 
         passengerName.text = passenger.name
+
+        passengerDistance.text = passenger.distance.toString() + "km"
 
         fuelPrice.text = passenger.fuelCost.toString() + " zł"
 

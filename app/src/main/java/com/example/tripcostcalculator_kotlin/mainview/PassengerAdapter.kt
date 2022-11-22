@@ -53,7 +53,7 @@ class PassengerAdapter (
                 sumAdditionalCost += it.price / passengerCount
             }
         }
-        return sumAdditionalCost
+        return BigDecimal(sumAdditionalCost).setScale(2, RoundingMode.HALF_EVEN).toDouble()
     }
 
     fun calculatePassengers(combustion: Double, fuelCost: Double, additionalCosts:MutableCollection<AdditionalCost>?){

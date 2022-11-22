@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E3E3E3"
+    android:textAlignment="center"
     tools:context=".mainview.MainActivity">
 
 
@@ -98,9 +99,10 @@
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
                             android:ems="10"
-                            android:hint="Dystans"
+                            android:hint="0"
                             android:inputType="numberDecimal"
                             android:padding="20px"
+                            android:textAlignment="center"
                             android:textColor="#000000" />
 
                         <TextView
@@ -169,6 +171,7 @@
                     android:ems="10"
                     android:inputType="numberDecimal"
                     android:padding="20px"
+                    android:textAlignment="center"
                     android:textColor="#000000" />
 
                 <TextView
@@ -214,6 +217,7 @@
                     android:ems="10"
                     android:inputType="numberDecimal"
                     android:padding="20px"
+                    android:textAlignment="center"
                     android:textColor="#000000" />
 
                 <TextView
@@ -273,9 +277,10 @@
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:ems="10"
-                        android:hint="Cena"
+                        android:hint="0"
                         android:inputType="numberDecimal"
                         android:padding="20px"
+                        android:textAlignment="center"
                         android:textColor="#000000" />
 
                     <TextView

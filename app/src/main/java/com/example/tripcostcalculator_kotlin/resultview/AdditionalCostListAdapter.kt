@@ -31,6 +31,7 @@ class AdditionalCostListAdapter(var context: Context, var additionalCosts: Array
         var additionalCost: AdditionalCost = additionalCosts.get(position)
 
         name.text = additionalCost.name
+
         price.text = additionalCost.price.toString()
 
         return view!!
